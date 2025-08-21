@@ -1,6 +1,5 @@
 package edu.dio.ui;
 
-import edu.dio.persistence.config.ConnectionConfig;
 import edu.dio.persistence.entity.BoardColumnEntity;
 import edu.dio.persistence.entity.BoardColumnKindEnum;
 import edu.dio.persistence.entity.BoardEntity;
@@ -38,7 +37,7 @@ public class MainMenu {
 
     private void createBoard() throws SQLException{
         var entity = new BoardEntity();
-        System.out.println("Informme o nome do seu board");
+        System.out.println("Informe o nome do seu board");
         entity.setName(scanner.next());
 
         System.out.println(
@@ -92,12 +91,12 @@ public class MainMenu {
     }
 
     private void deleteBoard() throws SQLException{
-        System.out.println("informe o ID do board que será excluido");
+        System.out.println("informe o ID do board que será excluído");
         Long id = scanner.nextLong();
         try (var connection = getConnection()) {
             var service = new BoardService(connection);
             if (service.delete(id)){
-                System.out.printf("O board %s foi excluido\n", id);
+                System.out.printf("O board %s foi excluído\n", id);
             } else {
                 System.out.printf("Não foi encontrado um board com id %s\n", id);
             }
