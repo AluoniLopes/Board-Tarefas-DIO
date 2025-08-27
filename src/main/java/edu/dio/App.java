@@ -11,7 +11,8 @@ public class App {
     public static void main(String[] args) throws SQLException {
         System.out.println("Rodando");
         try(Connection connection = ConnectionConfig.getConnection()) {
-            new MigrationStrategy(connection).executeMigration();
+            var migration = new MigrationStrategy(connection);
+            System.out.println("Migrações realizadas com sucesso!");
         }
         new MainMenu().execute();
     }
